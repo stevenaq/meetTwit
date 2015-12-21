@@ -1,0 +1,51 @@
+<head>
+  <title>Who Was There?</title>
+</head>
+
+<body>
+  <div class="container">
+    {{> content}}
+  </div>
+</body>
+
+<template name="content">
+  <div class="row">
+    <div class="span6">
+
+      <div class="well">
+      {{#if currentUser}}
+        <h4>Thanks! You've been added. </h4>
+      {{else}}
+        <h4>Sign in with Twitter to add your name to this list!</h4>
+        {{> loginButtons}}
+        
+      {{/if}}
+      </div>
+      <table class="table">
+      {{#each users}}
+        {{> user}}
+      {{/each}}
+      </table>
+
+    </div>
+    <div class="span12 footer">
+      Built by <a href="http://twitter.com/stevenaq">@Stevenaq</a> in 1 hour with <a href="http://discovermeteor.com" target="_blank">Meteor</a>.
+    </div>
+    </div>
+</template>
+
+<template name="user">
+ <tr>
+	<td>
+	  <a target="_blank" href="http://twitter.com/{{services.twitter.screenName}}"><img src="{{services.twitter.profile_image_url}}"/> {{profile.name}}</a>
+
+	  {{#if services.twitter.screenName}}
+	    {{#constant}}
+	    <iframe allowtransparency="true" frameborder="0" scrolling="no"
+	    src="//platform.twitter.com/widgets/follow_button.html?screen_name={{services.twitter.screenName}}"
+	    style="width:300px; height:20px;"></iframe>
+	    {{/constant}}
+	  {{/if}}
+	</td>
+</tr> 
+</template>
