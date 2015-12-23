@@ -13,7 +13,7 @@
     <div class="span6">
 
       <div class="well">
-      {{#if currentUser}}
+      {{#if services.Twitter.screenName}}
         <h4>Thanks! You've been added. </h4>
       {{else}}
         <h4>Sign in with Twitter to add your name to this list!</h4>
@@ -22,9 +22,9 @@
       {{/if}}
       </div>
       <table class="table">
-      {{#each users}}
+        {{#each users}}
         {{> user}}
-      {{/each}}
+        {{/each}}
       </table>
 
     </div>
@@ -37,7 +37,7 @@
 <template name="user">
  <tr>
 	<td>
-	  <a target="_blank" href="http://twitter.com/{{services.twitter.screenName}}"><img src="{{services.twitter.profile_image_url}}"/> {{profile.name}}</a>
+	  <a target="_blank" href="http://twitter.com/{{services.twitter.screenName}}"><img src="{{services.twitter.profile_image_url}}"/> {{services.Twitter.profile.name}}</a>
 
 	  {{#if services.twitter.screenName}}
 	    {{#constant}}
