@@ -13,17 +13,16 @@
     <div class="span6">
 
       <div class="well">
-      {{#if services.Twitter.screenName}}
+      {{#if screenName}}
         <h4>Thanks! You've been added. </h4>
       {{else}}
         <h4>Sign in with Twitter to add your name to this list!</h4>
         {{> loginButtons}}
-        
       {{/if}}
       </div>
       <table class="table">
         {{#each users}}
-        {{> user}}
+          {{> user}}
         {{/each}}
       </table>
 
@@ -31,21 +30,20 @@
     <div class="span12 footer">
       Built by <a href="http://twitter.com/stevenaq">@Stevenaq</a> in 1 hour with <a href="http://discovermeteor.com" target="_blank">Meteor</a>.
     </div>
-    </div>
+  </div>
 </template>
 
 <template name="user">
+  {{#if screenName}}
  <tr>
 	<td>
-	  <a target="_blank" href="http://twitter.com/{{services.twitter.screenName}}"><img src="{{services.twitter.profile_image_url}}"/> {{services.Twitter.profile.name}}</a>
-
-	  {{#if services.twitter.screenName}}
+	  <a target="_blank" href="http://twitter.com/{{screenName}}"><img src="{{profileUrl}}"/> {{name}}</a>
 	    {{#constant}}
-	    <iframe allowtransparency="true" frameborder="0" scrolling="no"
-	    src="//platform.twitter.com/widgets/follow_button.html?screen_name={{services.twitter.screenName}}"
-	    style="width:300px; height:20px;"></iframe>
+  	    <iframe allowtransparency="true" frameborder="0" scrolling="no"
+  	    src="//platform.twitter.com/widgets/follow_button.html?screen_name={{screenName}}"
+  	    style="width:300px; height:20px;"></iframe>
 	    {{/constant}}
-	  {{/if}}
 	</td>
-</tr> 
+</tr>
+{{/if}}
 </template>
