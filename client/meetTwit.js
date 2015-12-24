@@ -13,15 +13,15 @@ Template.content.onCreated(function() {
 
 Template.user.helpers({
   screenName: function() {
-    if(services && services.twitter)
-      return services.twitter.screenName
+    if(this.services && this.services.twitter)
+      return this.services.twitter.screenName
   },
   profileUrl: function() {
-    if(services && services.twitter)
-      return services.twitter.profile_image_url
+    if(this.services && this.services.twitter)
+      return this.services.twitter.profile_image_url
   },
   name: function() {
-    if(services && services.twitter)
-      return services.twitter.profile.name
+    if(this.services && this.services.twitter)
+      return this.services.twitter.profile.name
   }
 })
